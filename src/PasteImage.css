@@ -129,3 +129,41 @@
   font-size: 14px;
   cursor: pointer;
 }
+/* ... (previous CSS styles) */
+
+.qr-details ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap; /* Display list items in column-wise */
+  gap: 0; /* Remove space between list items */
+}
+
+.qr-details li {
+  flex: 0 1 200px; /* Allow the box to grow, but not shrink below 200px */
+  padding: 8px;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; Align content vertically */
+}
+
+.qr-details li span {
+  flex: 1; /* Allow the content to grow and fill available space */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide any overflowed content */
+  text-overflow: ellipsis; /* Show ellipsis (...) for overflowed content */
+}
+
+.qr-details li button {
+  flex: 0;
+  margin-left: 8px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+}
