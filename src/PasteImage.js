@@ -5,6 +5,7 @@ import './PasteImage.css';
 const PasteImage = () => {
   const [qrData, setQrData] = useState('');
   const [imageSrc, setImageSrc] = useState(null);
+  const [copiedIndex, setCopiedIndex] = useState(null);
 
   const handleImagePaste = (event) => {
     const items = (event.clipboardData || event.originalEvent.clipboardData).items;
@@ -30,6 +31,20 @@ const PasteImage = () => {
       }
     }
   };
+  const copyToClipboard = (text, index) => {
+    const tempTextArea = document.createElement('textarea');
+    tempTextArea.value = text;
+    document.body.appendChild(tempTextArea);
+    tempTextArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempTextArea);
+
+    setCopiedIndex(index);
+    setTimeout(() => {
+      setCopiedIndex(null);
+    }, 1500);
+  };
+
 
   const scanQRCode = (image) => {
     const canvas = document.createElement('canvas');
@@ -109,9 +124,13 @@ const PasteImage = () => {
               <div>
                 <h3>UPI Payment Details</h3>
                 <ul>
-                  {Object.entries(qrData.data).map(([key, value]) => (
+                  {Object.entries(qrData.data).map(([key, value], index) => (
                     <li key={key}>
-                      <strong>{key}:</strong> {value}
+                      <span>{key}:</span>
+                      <span>{value}</span>
+                      <button onClick={() => copyToClipboard(value, index)}>
+                        {copiedIndex === index ? 'Copied' : 'Copy'}
+                      </button>
                     </li>
                   ))}
                 </ul>
