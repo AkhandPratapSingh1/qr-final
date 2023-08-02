@@ -4,7 +4,9 @@ import PasteImage from './PasteImage';
 
 function App() {
   return (
+    <div className='app-container'>
     <PasteImage />
+    </div>
   );
 }
 
