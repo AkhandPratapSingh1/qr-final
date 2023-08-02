@@ -1,99 +1,131 @@
 /* PasteImage.css */
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .heading {
-    text-align: center;
-  }
-  
-  .paste-container {
-    border: 2px dashed #999;
-    padding: 10px;
-    margin-top: 20px;
-    min-height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-  }
-  
-  .pasted-image {
-    max-width: 100%;
-    max-height: 300px;
-  }
-  
-  .paste-placeholder {
-    text-align: center;
-    font-size: 18px;
-  }
-  
-  .qr-data-container {
-    margin-top: 20px;
-    border: 2px solid #999;
-    padding: 20px;
-  }
-  
-  .qr-details {
-    text-align: left;
-  }
-  
-  .qr-heading {
-    margin-top: 0;
-  }
-  
-  .qr-table {
-    width: 100%;
-    margin-top: 10px;
-    border-collapse: collapse;
-  }
-  
-  .qr-table td {
-    padding: 8px;
-    border: 1px solid #999;
-  }
-  
-  .qr-key {
-    font-weight: bold;
-    padding-right: 10px;
-  }
-  
-  .transaction-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.2s;
-  }
-  
-  .transaction-button:hover {
-    background-color: #0056b3;
-  }
-  
-  .transaction-history {
-    margin-top: 20px;
-  }
-  
-  .transaction-heading {
-    margin-top: 0;
-  }
-  
-  .transaction-table {
-    width: 100%;
-    margin-top: 10px;
-    border-collapse: collapse;
-  }
-  
-  .transaction-table th,
-  .transaction-table td {
-    padding: 8px;
-    text-align: center;
-    border: 1px solid #999;
-  }
-  
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.heading {
+  text-align: center;
+}
+
+.paste-container {
+  border: 2px dashed #999;
+  padding: 10px;
+  margin-top: 20px;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.pasted-image {
+  max-width: 100%;
+  max-height: 300px;
+}
+
+.paste-placeholder {
+  text-align: center;
+  font-size: 18px;
+}
+
+.qr-data-container {
+  margin-top: 20px;
+  border: 2px solid #999;
+  padding: 20px;
+}
+
+.qr-details {
+  text-align: left;
+}
+
+.qr-heading {
+  margin-top: 0;
+}
+
+.qr-table {
+  width: 100%;
+  margin-top: 10px;
+  border-collapse: collapse;
+}
+
+.qr-table td {
+  padding: 8px;
+  border: 1px solid #999;
+}
+
+.qr-key {
+  font-weight: bold;
+  padding-right: 10px;
+}
+
+.transaction-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s;
+}
+
+.transaction-button:hover {
+  background-color: #0056b3;
+}
+
+.transaction-history {
+  margin-top: 20px;
+}
+
+.transaction-heading {
+  margin-top: 0;
+}
+
+.transaction-table {
+  width: 100%;
+  margin-top: 10px;
+  border-collapse: collapse;
+}
+
+.transaction-table th,
+.transaction-table td {
+  padding: 8px;
+  text-align: center;
+  border: 1px solid #999;
+}
+
+/* Add styles for the QR code details container */
+.qr-data-container {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.qr-details ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap; /* Display list items in column-wise */
+}
+
+.qr-details li {
+  flex: 1 0 200px; /* Each item should have a minimum width of 200px */
+  padding: 8px;
+  border: 1px solid #ccc;
+  margin: 8px;
+}
+
+.qr-details li button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+}
