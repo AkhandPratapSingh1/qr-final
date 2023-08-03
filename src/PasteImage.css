@@ -113,7 +113,7 @@
 }
 
 .qr-details li {
-  flex: 1 0 200px; /* Each item should have a minimum width of 200px */
+  flex: 5 0 400px; /* Each item should have a minimum width of 200px */
   padding: 8px;
   border: 1px solid #ccc;
   margin: 8px;
@@ -140,7 +140,7 @@
 }
 
 .qr-details li {
-  flex: 0 1 200px; /* Allow the box to grow, but not shrink below 200px */
+  flex: 5 0 400px; /* Allow the box to grow, but not shrink below 200px */
   padding: 8px;
   border: 1px solid #ccc;
   display: flex;
@@ -149,7 +149,7 @@
 }
 
 .qr-details li span {
-  flex: 1; /* Allow the content to grow and fill available space */
+  flex: 0; /* Allow the content to grow and fill available space */
   white-space: nowrap; /* Prevent text from wrapping */
   overflow: hidden; /* Hide any overflowed content */
   text-overflow: ellipsis; /* Show ellipsis (...) for overflowed content */
