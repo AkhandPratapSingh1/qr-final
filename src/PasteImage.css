@@ -149,7 +149,7 @@
 }
 
 .qr-details li span {
-  flex: 0; /* Allow the content to grow and fill available space */
+  flex: 1; /* Allow the content to grow and fill available space */
   white-space: nowrap; /* Prevent text from wrapping */
   overflow: hidden; /* Hide any overflowed content */
   text-overflow: ellipsis; /* Show ellipsis (...) for overflowed content */
