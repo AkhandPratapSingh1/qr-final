@@ -166,3 +166,12 @@
 .highlight button:active {
   background-color: #00347a;
 }
+.external-box {
+  background-color: yellow;
+  border: 2px solid orange;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 10px;
+}
