@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import QrReader from 'jsqr';
 import './PasteImage.css';
 
@@ -91,21 +91,37 @@ const PasteImage = () => {
 
     params.forEach((param) => {
       const [key, value] = param.split('=');
-      upiParams[key] = decodeURIComponent(value);
+      const parsedKey = mapSpecialKeys(key); // Map special keys here
+      const parsedValue = mapSpecialValues(parsedKey, value); // Map special values here
+      upiParams[parsedKey] = decodeURIComponent(parsedValue);
     });
-
-    // Special handling for the 'tn' parameter containing spaces
-    if (upiParams.tn) {
-      const orderIdRegex = /ORDER_ID\s*:\s*(\d+)/;
-      const matches = upiParams.tn.match(orderIdRegex);
-      if (matches && matches[1]) {
-        upiParams.tn = matches[1];
-      }
-    }
 
     return upiParams;
   };
 
+
+  const mapSpecialKeys = (key) => {
+    // Define the mapping of special keys to the desired text here
+    const specialKeyMap = {
+      pn: 'Account Holder Name',
+      pa: 'UPI ID'
+    
+      // Add more mappings if needed
+    };
+
+    return specialKeyMap[key] || key;
+  };
+
+  const mapSpecialValues = (key, value) => {
+    // Define the mapping of special values to the desired text here
+    const specialValueMap = {
+      '@okhdfcbank': 'HDFC Bank',
+      '@ybl': 'Yes Bank',
+      // Add more mappings if needed
+    };
+
+    return specialValueMap[value] || value;
+  };
   return (
     <div>
       <h1>Paste Image</h1>
@@ -118,27 +134,61 @@ const PasteImage = () => {
       </div>
       {qrData && (
         <div className="qr-data-container">
-          {/* <h2>QR Code Details</h2> */}
           <div className="qr-details">
             {qrData.type === 'upi' ? (
               <div>
                 <h3>UPI Payment Details</h3>
                 <ul>
                   {Object.entries(qrData.data).map(([key, value], index) => (
-                    <li key={key}>
-                      <span>{key}:</span>
-                      <span>{value}</span>
+                    
+                    <li
+                      key={key}
+                      style={(key === 'UPI ID' || key === 'Account Holder Name') ? 
+                      { 
+                        
+                              backgroundColor: 'yellow',
+                              border: '2px solid orange',
+                              borderRadius: '5px',
+                              padding: '5px 10px',
+                              fontWeight: 'bold',
+                              color: '#333',
+                              marginBottom: '5px',
+                    
+                    
+                    } 
+                      
+                      : {}}
+                      
+                    >
+
+                      <span>{mapSpecialKeys(key)}: </span>
+                      {key === '' ? (
+                        <span>
+                          {mapSpecialValues(key, value)} ({value})
+                         
+                      ) : (
+                        <span>{value}</span>
+                      )}
+                        </span>
+                        
+                      ) : (
+                        <span>{value}</span>
+                      )}
                       <button onClick={() => copyToClipboard(value, index)}>
                         {copiedIndex === index ? 'Copied' : 'Copy'}
                       </button>
                     </li>
                   ))}
                 </ul>
+                <ul>
+               
+                </ul>
+                
+
               </div>
             ) : (
-                
               <p>{qrData.data}</p>
-            )}
+            )} 
           </div>
         </div>
       )}
